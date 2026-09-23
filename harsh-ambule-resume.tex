@@ -1,0 +1,123 @@
+\documentclass[letterpaper]{resume}
+
+\usepackage[left=0.42in,top=0.28in,right=0.42in,bottom=0.28in]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue}
+\usepackage{enumitem}
+
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+
+% ---- spacing overrides (calibrated for exact 1-page fit) ----
+\setlist[itemize]{topsep=1.2pt, itemsep=1.2pt, parsep=0pt, partopsep=0pt, leftmargin=1.15em}
+\raggedbottom
+\setlength{\parskip}{0.8pt}
+\setlength{\medskipamount}{2.8pt plus 0.8pt minus 0.6pt}
+\setlength{\smallskipamount}{1.5pt plus 0.5pt minus 0.4pt}
+
+\name{Harsh Ambule}
+
+\address{+91-8421182761 \\ Nandanwan, Nagpur, India}
+\address{
+  \href{mailto:harshambule612@gmail.com}{harshambule612@gmail.com} \\
+  \href{https://www.linkedin.com/in/harsh-ambule-3551bb266}{LinkedIn} \\
+  \href{https://harsh0177.github.io}{Portfolio} \\
+  \href{https://github.com/HARSH0177}{GitHub}
+}
+
+\begin{document}
+\fontsize{9.8}{11.8}\selectfont
+
+%----------------------------------------------------------------------------------------
+%   OBJECTIVE
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{OBJECTIVE}
+B.Tech Artificial Intelligence graduate with hands-on expertise spanning deep learning, generative computer vision, and multi-agent systems (MCP / LLM orchestration). Experienced from production GCP deployments (sub-second p50 latency, Erlang C queueing) to novel multi-modal research submitted to IEEE TGRS. Seeking to engineer scalable AI systems.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{EDUCATION}
+{\bf B.Tech in Artificial Intelligence}, Priyadarshini Bhagwati College of Engineering \hfill Aug 2022 -- Jul 2026
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   SKILLS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{SKILLS}
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{4ex}} p{0.80\textwidth} }
+Programming         & Python, C++, SQL, Bash \\
+ML \& Generative AI & Deep Learning, GANs, Cross-Attention / Transformers, Multi-Agent Systems, RAG, Ollama \\
+Frameworks \& Tools & PyTorch, TensorFlow, Scikit-learn, XGBoost, LangChain, Google Gemini API, FastAPI, OpenCV \\
+Cloud \& DevOps     & Google Cloud (Vertex AI, Cloud Run, BigQuery), Docker, Git, CI/CD, FastMCP, Hugging Face \\
+Data \& Systems     & Model Context Protocol (MCP), Erlang C Queueing, REST APIs, ChromaDB, Spatial-Temporal / GDAL \\
+\end{tabular}
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   PROJECTS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{PROJECTS}
+
+% ── RelieF-CR (CloudFree Vision) ─────────────────────────────────────────
+\textbf{RelieF-CR: Physics-Guided Multi-Modal Satellite Cloud Removal} \hfill
+{\it PyTorch, Cross-Attention, GANs, Remote Sensing}
+\begin{itemize}
+  \item Engineered a generative architecture fusing 5m LISS-IV optical, Sentinel-1 SAR (VV/VH), and 4-channel CartoDEM topography via learned Spatial Transformer Networks (STN) and Windowed Cross-Attention (Q-K-V routing over 15.3K patches).
+  \item Formulated a composite objective (2D FFT, Sobel gradient, Spectral-Normed PatchGAN, heteroscedastic uncertainty head); achieved \textbf{30.55\,dB PSNR}, \textbf{0.965 SSIM}, \textbf{1.49$^\circ$ SAM}; open-sourced benchmark dataset on Kaggle.
+\end{itemize}
+
+% ── EV Advisor ─────────────────────────────────────────────────────────────
+\textbf{Sustainable Mobility EV Charging Advisor} \hfill
+{\it Python, FastAPI, GCP (Cloud Run, BigQuery, Vertex AI), Erlang C, OCPP 1.6}
+\begin{itemize}
+  \item Architected a 6-agent autonomous pipeline (Orchestrator $\rightarrow$ Driver, Advisor, Data, Scoring, Explanation) fusing 6 live data feeds (BigQuery, OpenChargeMap, Google Places, OSM Overpass, NREL, OCPP) for real-time site discovery and ranking.
+  \item Formulated an M/M/c Erlang C queueing model for wait-time prediction ($p_{50} \le p_{90}$ validated over 728 configurations); deployed on Cloud Run with CI, attaining a \textbf{91.1\% pass rate} across a 56-check benchmark and \textbf{880ms p50 latency} across 10 global cities.
+\end{itemize}
+
+% ── NewsMate ──────────────────────────────────────────────────────────────
+\textbf{NewsMate -- Multi-Agent AI Fact-Checking \& Verification Platform} \hfill
+{\it Gemini 2.5 Flash, FastMCP Server, Search Grounding, Node.js}
+\begin{itemize}
+  \item Built a 3-stage agent pipeline (Orchestrator $\rightarrow$ Evidence Analyzer w/ MCP search grounding $\rightarrow$ Verdict Aggregator) exposed as a REST API and MCP server, producing calibrated TRUE/FALSE/MISLEADING/UNVERIFIED veracity verdicts.
+  \item Designed a versioned eval harness with error taxonomy auditing; achieved 62.5\% weighted accuracy (100\% on purely factual claims) across a 40-claim benchmark with zero rate-limit downtime via 5-key rotational routing.
+\end{itemize}
+
+% ── CarbonLens & Environmental Intelligence ────────────────────────────────
+\textbf{Environmental Impact Intelligence \& CarbonLensAI} \hfill
+{\it Python, PyTorch, Google Gemini API, Sentinel-2, CNN-LSTM}
+\begin{itemize}
+  \item Developed linked geospatial models: MobileNetV2 deforestation classifier (0.92 ROC-AUC), XGBoost/NN PM2.5 air-quality forecaster ($R^2=0.90$ on 5.7M CPCB readings), and multi-modal satellite-NDVI fusion model ($R^2=0.972$).
+  \item Built CarbonLensAI, a multi-sector predictive emissions simulator generating decarbonization scenarios, recognized as a verified Generative AI solution submission for Google PromptWars Challenge 3.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   ACHIEVEMENTS & CERTIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{ACHIEVEMENTS \& CERTIFICATIONS}
+\textbf{Smart India Hackathon (SIH)} -- Runner-up \& 3$\times$ Team Lead at National Evaluation Stage for AI/ML solutions \hfill 2024 -- 2026 \\
+\textbf{Google PromptWars Virtual} -- Verified Generative AI Solution Submission, Challenge 3 (Google for Developers) \hfill Aug 2026 \\
+\textbf{Google Cloud Gen AI Academy APAC} -- Cohort 1 Hackathon \& Cohort 2 Completion (Google Cloud / Hack2skill) \hfill 2026 \\
+\textbf{Deep Learning Specialization} by DeepLearning.AI / Coursera -- Andrew Ng (Credential: \texttt{Q1QDE1F2U2HD}) \hfill 2026 \\
+\textbf{Machine Learning Specialization} by Stanford Online \& DeepLearning.AI -- Coursera \hfill 2026
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%   RESEARCH PAPERS & SCHOLARLY ACTIVITY
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{RESEARCH PAPERS \& SCHOLARLY ACTIVITY}
+\textbf{RelieF-CR: Relief-Guided Multi-Modal Fusion for Satellite Cloud Removal} \hfill \textit{Submitted to IEEE TGRS} \\
+\textbf{NewsMate: Evidence-Grounded Fact-Checking via Multi-Agent LLM Orchestration} \hfill \textit{Manuscript in Progress} \\
+\textbf{Engineering Applications of Artificial Intelligence (Elsevier)} \hfill \textit{Verified Peer Reviewer (ORCID: 0009-0009-5442-7687)}
+\end{rSection}
+
+\end{document}

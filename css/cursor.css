@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Dünya Baradari — Exact Ambient Cursor Dot Trail
+   Reference: https://www.dunya-baradari.com/
+   Native pointer + slow floating '·' dots drifting upward
+   ========================================================================== */
+
+.et-trail {
+  pointer-events: none;
+  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.et-trail__dot {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  pointer-events: none;
+  will-change: opacity, transform;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  animation: 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards et-fade;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  color: #e8d8b8;
+  user-select: none;
+}
+
+[data-theme="light"] .et-trail__dot {
+  color: #8a7356;
+}
+
+@keyframes et-fade {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  40% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35) translateY(-14px);
+  }
+}
+

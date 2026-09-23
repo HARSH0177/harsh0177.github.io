@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Sagar Tamang — Exact Floating Bottom Assistant Bar
+   ========================================================================== */
+
+.st-assistant-wrap {
+  position: fixed;
+  inset-x: 0;
+  bottom: 1.25rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+
+/* Floating Input Box */
+.st-assistant-bar {
+  width: 100%;
+  max-width: 36rem; /* 576px max-w-xl */
+  height: 54px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  padding: 0.35rem 0.5rem 0.35rem 0.85rem;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+[data-theme="dark"] .st-assistant-bar {
+  background-color: #121214;
+  border-color: #26262a;
+}
+
+.st-assistant-bar:focus-within {
+  border-color: var(--border-active);
+}
+
+/* Left Paperclip Icon */
+.st-assistant-icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.st-assistant-icon-btn:hover {
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+}
+
+.st-assistant-icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Input & Animated Placeholder */
+.st-assistant-input-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.st-assistant-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text-main);
+  z-index: 2;
+  text-transform: none;
+}
+
+.st-assistant-placeholder {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Actions (Mic + Send) */
+.st-assistant-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.st-assistant-send-btn {
+  background-color: var(--text-main);
+  color: var(--bg-main);
+  border: none;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  flex-shrink: 0;
+}
+
+.st-assistant-send-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.st-assistant-send-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.st-assistant-send-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Response Drawer / Popover (Appears cleanly above the bar) */
+.st-assistant-popover {
+  width: 100%;
+  max-width: 36rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-main);
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  position: relative;
+  text-transform: none;
+}
+
+.st-assistant-popover.is-open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.st-assistant-popover-close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.25rem;
+}
+
+.st-assistant-popover-close:hover {
+  color: var(--text-main);
+}

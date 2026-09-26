@@ -93,7 +93,7 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 {\it Python, Gemini Flash Vision, TensorFlow, XGBoost, Sentinel-2, FastAPI}
 \begin{itemize}
   \item Trained linked geospatial models: MobileNetV2 canopy deforestation classifier (\textbf{0.92 ROC-AUC} validated via Grad-CAM) and XGBoost PM2.5 forecaster ($R^2=0.90$ across 5.7M CPCB sensor readings); served via containerized FastAPI.
-  \item Architected CarbonLensAI, a multimodal carbon scanner with a stateful half-open circuit breaker (5-min cooldown) and category-average fallbacks over 140+ verified emission factors; achieved \textbf{90.14/100} (\textbf{100/100 efficiency}, 95/100 security) in \textbf{Google PromptWars Challenge 3}; engineered a deterministic LCA calculation layer validated against published literature ground truth (\textbf{8.95\% MAPE}, \textbf{97.8\% pairwise swap concordance}).
+  \item Architected CarbonLensAI, a multimodal carbon scanner with a stateful half-open circuit breaker (5-min cooldown) and category-average fallbacks over 140+ verified emission factors; achieved \textbf{90.14/100} (\textbf{100/100 efficiency}, 95/100 security) in \textbf{Google PromptWars Challenge 3}; engineered a deterministic LCA calculation layer validated against published literature ground truth (\textbf{3.15\% MAPE}, \textbf{99.1\% pairwise concordance} across 30 cases).
 \end{itemize}
 
 \end{rSection}

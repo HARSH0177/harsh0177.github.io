@@ -1,50 +1,22 @@
-% resume.cls
-
-% \documentstyle{resume}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright (C) 2010 by Trey Hunner
-%
-% Copying and distribution of this file, with or without modification,
-% are permitted in any medium without royalty provided the copyright
-% notice and this notice are preserved.  This file is offered as-is,
-% without any warranty.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
-
 \LoadClass[11pt,letterpaper]{article}
-
-\usepackage[parfill]{parskip}       % Do not indent paragraphs
-\usepackage{array}                  % required for boldface tabular columns
+\usepackage[parfill]{parskip}
+\usepackage{array}
 \usepackage{ifthen}
-
-\nofiles                            % .aux files are not needed for resumes
-\pagestyle{empty}                   % resumes do not need page numbers
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% HEADINGS: Commands for printing name and address
-
-\def \name#1{\def\@name{#1}}        % \name command can be used to set name
-\def \@name {}                      % Set \@name to empty by default
-
-\def \addressSep {$\diamond$}         % Set default address seperator
-
-% One or two address lines can be specified 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,filecolor=magenta,urlcolor=blue}
+\pagestyle{empty}
+\def \name#1{\def\@name{#1}}
+\def \@name {}
+\def \addressSep {$\diamond$}
 \let \@addressone \relax
 \let \@addresstwo \relax
-
-% \address command can be used to set first and second address (optional)
+\let \@addressthree \relax
 \def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-    \def \@addressone {#1}
-  }
+  \@ifundefined{@addresstwo}{\def \@addresstwo {#1}}{
+  \@ifundefined{@addressthree}{\def \@addressthree {#1}}{
+  \def \@addressone {#1}}}
 }
-
-% \printaddress is used to style an address line (given as input)
 \def \printaddress #1{
   \begingroup
     \def \\ {\addressSep\ }
@@ -53,65 +25,44 @@
   \par
   \addressskip
 }
-
-% \printname is used to print the name as a page header
 \def \printname {
   \begingroup
-    \centerline{\textbf{\MakeUppercase{\namesize\@name}}}
+    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
+    \nameskip\break
   \endgroup
-  \par
-  \nameskip
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% DOCUMENT: Create the head of the document
-
-\AtBeginDocument{                     % Begin document
-  \printname                        % Print the name specified with \name
-  \@ifundefined{@addressone}{}{     % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{     % Print the second address if specified
-    \printaddress{\@addresstwo}}
+\let\ori@document=\document
+\renewcommand{\document}{
+  \ori@document
+  \printname
+  \@ifundefined{@addressone}{}{\printaddress{\@addressone}}
+  \@ifundefined{@addresstwo}{}{\printaddress{\@addresstwo}}
+  \@ifundefined{@addressthree}{}{\printaddress{\@addressthree}}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTIONS: Create section headings
-
-% Used to create large resume section
 \newenvironment{rSection}[1]{
   \sectionskip
-  \textbf{\MakeUppercase{#1}}
+  \MakeUppercase{{\bf #1}}
   \sectionlineskip
   \hrule
-  \begin{list}{}{
-    \setlength{\leftmargin}{1.5em}
-  }
+  \begin{list}{}{\setlength{\leftmargin}{0em}}
   \item[]
 }{
   \end{list}
 }
-
-% Used to format job listing
 \newenvironment{rSubsection}[4]{
-  %%%%%%%%%%%%%%%%%%%%%% Default Layout: %%%%%%%%%%%%%%%%%%%%%%%%
-  %%    Employer (bold)                     Dates (regular)    %%
-  %%    Title (emphasis)                Location (emphasis)    %%
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \textbf{#1}                 \hfill                  {    #2}% Stop a space
-  \ifthenelse{\equal{#3}{}}{}{
+ {\bf #1} \hfill {#2}
+ \ifthenelse{\equal{#3}{}}{}{
   \\
-  \emph{#3}                \hfill                  \emph{#4}% Stop a space
+  {\em #3} \hfill {\em #4}
   }\smallskip
-  % \cdot used for bullets, items non-indented
   \begin{list}{$\cdot$}{\leftmargin=0em}
-  \itemsep -0.5em \vspace{-0.5em}
-}{
+   \itemsep -0.5em \vspace{-0.5em}
+  }{
   \end{list}
   \vspace{0.5em}
 }
-
-\def\namesize{\huge}
-\def\nameskip{\medskip}
+\def\namesize{\LARGE}
 \def\addressskip{\smallskip}
-\def\sectionskip{\bigskip}
 \def\sectionlineskip{\medskip}
+\def\nameskip{\medskip}
+\def\sectionskip{\medskip}

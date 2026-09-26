@@ -1,37 +1,39 @@
 \documentclass[letterpaper]{resume}
 
-\usepackage[left=0.42in,top=0.28in,right=0.42in,bottom=0.28in]{geometry}
+\usepackage[left=0.40in,top=0.25in,right=0.40in,bottom=0.25in]{geometry}
 \usepackage{enumitem}
 
 \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 
 % ---- spacing overrides (calibrated for exact 1-page fit) ----
-\setlist[itemize]{topsep=1.1pt, itemsep=1.1pt, parsep=0pt, partopsep=0pt, leftmargin=1.15em}
+\setlist[itemize]{topsep=0.8pt, itemsep=0.8pt, parsep=0pt, partopsep=0pt, leftmargin=1.15em}
 \raggedbottom
-\setlength{\parskip}{0.6pt}
-\setlength{\medskipamount}{2.4pt plus 0.6pt minus 0.5pt}
-\setlength{\smallskipamount}{1.2pt plus 0.4pt minus 0.3pt}
+\setlength{\parskip}{0pt}
+\def\sectionskip{\vspace{2.5pt}}
+\def\sectionlineskip{\vspace{1.5pt}}
+\def\nameskip{\vspace{1.5pt}}
+\def\addressskip{\vspace{1.0pt}}
 
 \name{Harsh Ambule}
 
-\address{+91-8421182761 \\ Nandanwan, Nagpur, India}
+\address{+91-8421182761 $\diamond$ Nandanwan, Nagpur, India}
 \address{
-  \href{mailto:harshambule612@gmail.com}{harshambule612@gmail.com} \\
-  \href{https://www.linkedin.com/in/harsh-ambule-3551bb266}{LinkedIn} \\
-  \href{https://harsh0177.github.io}{Portfolio} \\
+  \href{mailto:harshambule612@gmail.com}{harshambule612@gmail.com} $\diamond$
+  \href{https://www.linkedin.com/in/harsh-ambule-3551bb266}{LinkedIn} $\diamond$
+  \href{https://harsh0177.github.io}{Portfolio} $\diamond$
   \href{https://github.com/HARSH0177}{GitHub}
 }
 
 \begin{document}
-\fontsize{9.6}{11.5}\selectfont
+\fontsize{9.3}{11.2}\selectfont
 
 %----------------------------------------------------------------------------------------
 %   OBJECTIVE
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{OBJECTIVE}
-B.Tech Artificial Intelligence graduate with hands-on expertise spanning deep learning, generative computer vision, and multi-agent architectures (MCP, LLM orchestration). Experienced from scalable Google Cloud deployments to novel multi-modal and spatial research under peer review at IEEE TGRS and Elsevier EAAI. Seeking to engineer robust, high-performance AI systems.
+B.Tech Artificial Intelligence graduate with hands-on expertise spanning deep learning, generative computer vision, and multi-agent systems (MCP, LLM orchestration). Experienced from production GCP deployments (sub-second p50 latency) to multi-modal satellite research under peer review at IEEE TGRS and Elsevier EAAI. Seeking to engineer robust, high-performance AI systems.
 \end{rSection}
 
 %----------------------------------------------------------------------------------------
@@ -47,12 +49,11 @@ B.Tech Artificial Intelligence graduate with hands-on expertise spanning deep le
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{SKILLS}
-\begin{tabular}{ @{} >{\bfseries}l @{\hspace{3.5ex}} p{0.80\textwidth} }
-Programming         & Python \\
-ML \& AI            & Machine Learning, Deep Learning, Generative AI (GANs, Attention), Multi-Agent Systems \\
-Frameworks \& Tools & PyTorch, TensorFlow, Scikit-learn, XGBoost, LangChain, Google ADK, FastAPI, Pandas, NumPy \\
-Cloud \& DevOps     & Google Cloud (Vertex AI, Cloud Run, BigQuery), Hugging Face, Docker, Git, CI/CD \\
-Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Databases, Data Pipelines, Model Serving \\
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{3ex}} p{0.80\textwidth} }
+Deep Learning \& Vision & PyTorch, TensorFlow, CNN-LSTM, Attention, U-Net, PatchGAN, MobileNetV2, Grad-CAM \\
+Multi-Agent \& GenAI    & Model Context Protocol (MCP), ADK, LangChain, Gemini API, Claude, ToolGrad, RAG \\
+Geospatial \& Backend   & Sentinel-1/2, BigQuery GIS, CartoDEM, FastAPI, Docker, Google Cloud Run, GKE \\
+Core Languages          & Python, SQL, JavaScript, C++, Git, Linux, KaTeX
 \end{tabular}
 \end{rSection}
 
@@ -62,9 +63,9 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 
 \begin{rSection}{PROJECTS}
 
-% ── EV Spatial Advisor ─────────────────────────────────────────────────────
-\textbf{Sustainable Mobility EV Charging Advisor (EV Spatial Intelligence)} \hfill
-{\it Python, FastAPI, GCP (Cloud Run, BigQuery GIS), Erlang C, Docker}
+% ── EV Spatial Intelligence Engine ──────────────────────────────────────────
+\textbf{EV Spatial Intelligence: Mobility Guidance \& Charging Siting Platform} \hfill
+{\it Cloud Run, BigQuery, FastAPI, Erlang C}
 \begin{itemize}
   \item Architected a 6-agent autonomous spatial decision system (Orchestrator $\rightarrow$ Driver, Advisor, Data, Scoring, Explanation) fusing 6 heterogeneous data sources (BigQuery GIS, OpenChargeMap, Google Places, OSM Overpass, NREL, OCPP 1.6).
   \item Formulated an $M/M/c$ Erlang C queueing model for wait-time prediction ($p_{50} \le p_{90}$ validated over 728 configurations); deployed on Cloud Run with CI/CD, validated via a \textbf{53-check benchmark harness} with \textbf{880\,ms p50 latency} across 10 global cities.
@@ -79,8 +80,8 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 \end{itemize}
 
 % ── NewsMate ──────────────────────────────────────────────────────────────
-\textbf{NewsMate -- Multi-Agent AI Fact-Checking \& Verification Platform} \hfill
-{\it Gemini 2.5 Flash, Model Context Protocol (MCP), Node.js, REST API}
+\textbf{NewsMate: Multi-Agent AI Fact-Checking \& Verification Platform} \hfill
+{\it Gemini 2.5 Flash, FastMCP, Node.js, REST API}
 \begin{itemize}
   \item Built a 3-stage agent pipeline (Orchestrator $\rightarrow$ Evidence Analyzer w/ MCP search grounding $\rightarrow$ Verdict Aggregator) exposed as a REST API and MCP server, producing calibrated TRUE/FALSE/MISLEADING/UNVERIFIED veracity verdicts.
   \item Designed a versioned eval harness with error taxonomy auditing; achieved 62.5\% weighted accuracy (100\% on purely factual claims) across a 40-claim benchmark with zero rate-limit downtime via 5-key rotational routing.
@@ -88,7 +89,7 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 
 % ── CarbonLens & Environmental Intelligence ────────────────────────────────
 \textbf{CarbonLensAI: Dual-Engine Environmental Intelligence Platform} \hfill
-{\it Python, Gemini Flash Vision, TensorFlow, XGBoost, Sentinel-2, FastAPI}
+{\it Gemini Flash Vision, ToolGrad, FastAPI, Sentinel-2}
 \begin{itemize}
   \item Trained linked geospatial models: MobileNetV2 canopy deforestation classifier (\textbf{0.92 ROC-AUC} validated via Grad-CAM) and XGBoost PM2.5 forecaster ($R^2=0.90$ across 5.7M CPCB sensor readings); served via containerized FastAPI.
   \item Reimplemented \textbf{ToolGrad} (ACL 2026), conditioning agentic tool proposals on accumulated textual gradients to steer physical constraint-satisfying trajectory synthesis; engineered a deterministic LCA calculation engine validated against literature ground truth (\textbf{3.15\% MAPE}, \textbf{99.1\% concordance} across 30 cases); recognized with a \textbf{Certificate of Appreciation} in \textbf{Google PromptWars Challenge 3} (\textbf{90.14/100 score}, \textbf{100/100 efficiency}).
@@ -101,7 +102,7 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{RESEARCH PAPERS \& SCHOLARLY ACTIVITY}
-\textbf{RelieF-CR: Relief-Guided Multi-Modal Fusion for Satellite Cloud Removal} \hfill \textit{Under Peer Review, IEEE TGRS} \\
+\textbf{RelieF-CR: Multi-Modal Fusion for Satellite Cloud Removal} \hfill \textit{Under Peer Review, IEEE TGRS} \\
 \textbf{Autonomous Multi-Agent Spatial Siting for EV Infrastructure via $M/M/c$ Queueing} \hfill \textit{Under Peer Review, Elsevier EAAI} \\
 \textbf{Engineering Applications of Artificial Intelligence (Elsevier)} \hfill \textit{Verified Peer Reviewer (ORCID: \href{https://orcid.org/0009-0009-5442-7687}{0009-0009-5442-7687})}
 \end{rSection}
@@ -111,8 +112,8 @@ Data \& Infra       & REST APIs, MCP (Model Context Protocol), SQL, Vector Datab
 %----------------------------------------------------------------------------------------
 
 \begin{rSection}{ACHIEVEMENTS \& CERTIFICATIONS}
-\textbf{Smart India Hackathon (SIH)} -- 3$\times$ Team Lead \& Rank 1 Project for 3 Consecutive Years; Nominated for National Stage \hfill 2024 -- 2026 \\
-\textbf{Google PromptWars Virtual} -- Verified GenAI Submission, Challenge 3 (100\% Efficiency, 90.14/100 Score) \hfill Aug 2026 \\
+\textbf{Smart India Hackathon (SIH)} -- 3$\times$ Team Lead \& Rank 1 (3 Consecutive Years); Nominated for National Stage \hfill 2024 -- 2026 \\
+\textbf{Google PromptWars Virtual} -- Verified GenAI Submission, Challenge 3 (\textbf{90.14/100 Score}, \textbf{100\% Efficiency}) \hfill Aug 2026 \\
 \textbf{Google Cloud Gen AI Academy APAC} -- Cohort 1 Hackathon \& Cohort 2 Completion (Google Cloud / Hack2skill) \hfill 2026 \\
 \textbf{Deep Learning Specialization} by DeepLearning.AI / Coursera -- Andrew Ng (Credential: \texttt{Q1QDE1F2U2HD}) \hfill 2026 \\
 \textbf{Machine Learning Specialization} by Stanford Online \& DeepLearning.AI -- Coursera \hfill 2026
